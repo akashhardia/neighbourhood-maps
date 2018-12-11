@@ -5,13 +5,13 @@ import './App.css';
 class App extends Component {
 
 	componentDidMount(){
-		this.getVenuesFromAPI();
-		this.mapRenderer();
+		this.getVenuesFromAPI();		
 	}
 
 	state = {
 		venues:[]
 	} 
+	// keeps track of venues in application using venues array 
 
 	mapRenderer = () => {
 		scriptLoader("https://maps.googleapis.com/maps/api/js?key=AIzaSyDXdfy8blk2k0sCJhOeAIfGbRRD0BxfkNQ&callback=initMap");
@@ -32,7 +32,7 @@ class App extends Component {
 		axios.get(fsEndPoint+ new URLSearchParams(params)).then(res=>{
 			this.setState({
 				venues: res.data.response.groups[0].items 
-			})  
+			},this.mapRenderer())  
 			console.log(res)
 		}).catch(error=>{
 			console.log("error "+error)
@@ -43,6 +43,15 @@ class App extends Component {
         let map = new window.google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8
+        });
+
+        this.state.venues.map(data => {
+
+	        var marker = new window.google.maps.Marker({
+			    position: {lat: data.venue.location.lat, lng: data.venue.location.lng},
+			    map: map,
+			    title: 'Hello World!'
+			  });
         });
     }
 
