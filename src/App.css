@@ -31,9 +31,7 @@
   }
 }
 
-#map {
-        height: 100vh;
-      }
+
       /* Optional: Makes the sample page fill the window. */
       
 html, body {
@@ -41,3 +39,79 @@ html, body {
     margin: 0;
     padding: 0;
     }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      input {
+        font-size: 12px;
+      }
+
+      h1 {
+        color: #525454;
+        font-size: 22px;
+        margin: 0 0 10px 0;
+        text-align: center;
+      }
+
+      
+      #map {
+        bottom:0px;
+        height: 100%;
+        left: 362px;
+        position: absolute;
+        right: 0px;
+      }
+
+      .options-box {
+        background: #fff;
+        height: 100%;
+        line-height: 35px;
+        padding: 10px 10px 30px 10px;
+        text-align: left;
+        width: 340px;
+      }
+ 
+
+      #places-search,
+      #search-within-time-text {
+        width: 84%;
+      }
+
+      .text {
+        font-size: 12px;
+      }
+
+       
