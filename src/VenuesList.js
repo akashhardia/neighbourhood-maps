@@ -7,7 +7,8 @@ class VenuesList extends Component{
 
 	static propTypes = {
     	venues: PropTypes.array.isRequired,
-    	filter: PropTypes.func.isRequired
+    	hide: PropTypes.func.isRequired,
+    	show: PropTypes.func.isRequired
   	}
 
   	state={
@@ -18,21 +19,38 @@ class VenuesList extends Component{
 	    this.setState({ query: query })
 	}
 
-	render(){
+	showMarkers=(markers)=>{
+		markers.forEach(marker=>marker.setVisible(true));
+	}
 
+	hideMarkers=()=>{
+		this.props.venues.forEach(marker=>marker.setVisible(false));
+	}
+
+	render(){
 		let props = this.props;
 		const { query } = this.state
+	    let showingVenues=[]    
 
+	    	if (query) {
+			    const match = new RegExp(escapeRegExp(query), 'i')
 
-	    let showingVenues
-	    if (query) {
-	      const match = new RegExp(escapeRegExp(query), 'i')
-	      showingVenues = props.venues.filter((data) => match.test(data.venue.name))
-	    } else {
-	      showingVenues = props.venues
-	    }
-
-	    showingVenues.sort(sortBy('name'))
+			    props.venues.forEach(function(data){ 
+				    if(match.test(data.venue.name)){
+				    	data.marker.setVisible(true);
+				    	showingVenues.push(data);
+					}else{
+				    	data.marker.setVisible(false);
+					} 
+				});
+			}else {
+				   showingVenues = props.venues;
+			}
+				  
+	    showingVenues.sort(sortBy('name'));
+	    // this.hideMarkers();
+	    // this.showMarkers(showingVenues);
+	    // this.props.show(showingVenues);
 
 
 		 return (
