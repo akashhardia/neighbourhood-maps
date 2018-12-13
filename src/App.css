@@ -33,7 +33,7 @@
 
 
       /* Optional: Makes the sample page fill the window. */
-      
+
 html, body, {
     height: 100%;
     margin: 0;
@@ -56,14 +56,14 @@ h1 {
     font-family: 'Roboto', sans-serif;
     }
 
-      
+
 #map {
   bottom: 0px;
   top: 60px;
   height: calc(100% - 60px);
   left: 260px;
   position: absolute;
-  right: 0px; 
+  right: 0px;
 }
 
 .side-bar {
@@ -100,7 +100,7 @@ h1 {
 .hamburger{
      display: inline-block;
      width: 45px;
-     height: 45px; 
+     height: 45px;
      text-align: center;
      line-height: 45px;
      vertical-align: middle;
@@ -111,7 +111,7 @@ h1 {
 
 .venue-list{
     list-style-type: none;
-    padding-left: 15px; 
+    padding-left: 15px;
 }
 
 .venue-list>li{
@@ -121,7 +121,7 @@ h1 {
 }
 
 .filter-input{
-    margin-top: 15px;        
+    margin-top: 15px;
     padding: 5px;
     padding-left: 15px;
     width: 240px;
@@ -132,7 +132,7 @@ h1 {
     color: #b5b5b5;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 800px) {          /*laptop*/
   .navbar{
     height: 50px;
     line-height: 45px;
