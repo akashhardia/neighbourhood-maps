@@ -167,11 +167,11 @@ class App extends Component {
 
         if (this.state.currentMarker) {
             this.state.currentMarker.setAnimation(null);
-            this.setState({
-            'currentMarker': ''
-        });
+	        this.setState({
+	            'currentMarker': ''
+	        });
         }
-                this.state.infowindow.open(map, marker);
+        this.state.infowindow.open(map, marker);
 
         this.state.infowindow.setContent(`details loading...`);
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
@@ -182,17 +182,9 @@ class App extends Component {
         map.setZoom(13);
         map.setCenter(marker.getPosition());
 
-        // if (this.state.currentMarker) {
-        //     this.state.currentMarker.setAnimation(null);
-        // }
-        // this.setState({
-        //     'currentMarker': ''
-        // });
-
-
-
         this.fetchDetails(marker, data.venue);
     }
+
 
     closeInfo=()=> {						// closes infowindow
     	this.state.infowindow.close();
@@ -200,7 +192,6 @@ class App extends Component {
 
     zoomOutFunc = () => {					//zooms out the map
     	let map = this.state.map;
-
     	map.setZoom(11);
     }
 

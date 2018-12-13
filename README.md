@@ -19,9 +19,9 @@ This app loads map with markers for each food place and a list of these in sideb
 Clicking on a map marker or item in list to get details about the specific location.
 
 ## Technology
-Reactjs
-HTML
-CSS
-Foursquare API
-Google Maps API
+Reactjs,
+HTML,
+CSS,
+Foursquare API,
+Google Maps API,
 axios

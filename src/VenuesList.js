@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import {PropTypes} from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
 class VenuesList extends Component{
-
-	static propTypes = {
-    	venues: PropTypes.array.isRequired,
-
-  	}
 
   	state={
   		query: ""
@@ -22,24 +16,22 @@ class VenuesList extends Component{
 
 	render(){
 		let props = this.props;
-		const { query } = this.state
-	    let showingVenues=[]
+		const { query } = this.state;
+	    let showingVenues=[];
 
-	    if (query) {
-			    const match = new RegExp(escapeRegExp(query), 'i')
-			    props.venues.forEach(function(data){
-				    if(match.test(data.venue.name)){
-				    	data.marker.setVisible(true);
-				    	showingVenues.push(data);
-
-
-					}else{
-				    	data.marker.setVisible(false);
-				    	props.zoomOut();
-					}
-				});
+	    if (query){
+		    const match = new RegExp(escapeRegExp(query), 'i')
+		    props.venues.forEach(function(data){
+				if(match.test(data.venue.name)){
+				    data.marker.setVisible(true);
+				    showingVenues.push(data);
+ 				}else{
+				    data.marker.setVisible(false);
+				    props.zoomOut();
+				}
+			});
 		}else{
-				showingVenues = props.venues;
+			showingVenues = props.venues;
 		}
 
 	    showingVenues.sort(sortBy('name'));
