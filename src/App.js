@@ -14,8 +14,7 @@ class App extends Component {
 		this.state = {
 			venues:[],
 			infowindow: "",
-			map: "",
-			prev: ""
+			map: ""
 		}; 
 		 
 		this.initMap = this.initMap.bind(this); 
@@ -73,9 +72,17 @@ class App extends Component {
     setMarker =(map, items)=>{
     	var allvenues = [];
      	var self = this;
+
+     	window.google.maps.event.addDomListener(window, "resize", function() {
+			 var center = map.getCenter();
+			 window.google.maps.event.trigger(map, "resize");
+			 map.setCenter(center); 
+			});
+
     	//information window
     	var infowindow = new window.google.maps.InfoWindow();
-    	    	
+    	this.setInfoWindowInState(infowindow);
+    	infowindow.close();    	
 
         // looping through venues
         items.map(data => {
@@ -89,11 +96,13 @@ class App extends Component {
 				    animation: window.google.maps.Animation.DROP, 
 				  });
 
- 	    		function onMarkerClick(){
+ 	    		function onMarkerClick(e){
 	    			//before opening window, change its contents
 		        	// infowindow.setContent(contentString);  
 		        	
 		        	self.setInfoWindowInState(infowindow);
+		        	map.setZoom(13);
+                 	map.setCenter(e.latLng);
 				    // infowindow.open(map,marker);
 				    self.openInfo(marker,contentString);
 				      
@@ -123,19 +132,24 @@ class App extends Component {
         this.closeInfo();
         let map = this.state.map;
 
-        if(this.state.infowindow  ){
-        		this.state.infowindow.setContent(contentString);
-        		this.state.infowindow.open(map, marker);
-                // marker.setAnimation(window.google.maps.Animation.BOUNCE);
-                 
-        	}
+      
+         
+        map.setZoom(13);
+        map.setCenter(marker.getPosition());
+       
+
+        this.state.infowindow.setContent(contentString);
+        this.state.infowindow.open(map, marker);
     }
 
     closeInfo=()=> {
-    	if (this.state.infowindow){ 
-	        this.state.infowindow.close();
-     	}
-        
+    	    this.state.infowindow.close();
+    }
+
+    zoomOutFunc = () => {
+    	let map = this.state.map;
+
+    	map.setZoom(11);
     }
 
     toogleListView = () => {
@@ -165,7 +179,7 @@ class App extends Component {
  				</span>
 	      	</div>
 
-	      	<VenuesList venues={this.state.venues} openInfow={this.openInfo} closeInfow={this.closeInfo} mainState={this.state}   />
+	      	<VenuesList venues={this.state.venues} openInfow={this.openInfo} closeInfow={this.closeInfo} mainState={this.state} zoomOut={this.zoomOutFunc} />
 
 	      	<div id='map'></div>
 
