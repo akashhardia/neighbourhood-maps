@@ -25,3 +25,9 @@ CSS,
 Foursquare API,
 Google Maps API,
 axios
+
+## screenshot
+![desktop](https://github.com/akashhardia/neighbourhood-maps/blob/master/imagesforreadme/Screenshot%20(405).png "Desktop")
+![desktop](https://github.com/akashhardia/neighbourhood-maps/blob/master/imagesforreadme/Capture.JPG "Desktop")
+![desktop](https://github.com/akashhardia/neighbourhood-maps/blob/master/imagesforreadme/Capture1.JPG "Desktop")
+![desktop](https://github.com/akashhardia/neighbourhood-maps/blob/master/imagesforreadme/Capture3.JPG "Desktop")
