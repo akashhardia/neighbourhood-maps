@@ -18,21 +18,7 @@ class VenuesList extends Component{
 	    this.setState({ query: query })
 	}
 
-	// showMarkers=(markers)=>{
-	// 	markers.forEach(marker=>marker.setVisible(true));
-	// }
-
-	// hideMarkers=()=>{
-	// 	this.props.closeInfo();
-	// 	this.props.venues.forEach(marker=>marker.setVisible(false));
-	// }
-
-	// openInfoWindow=(data)=>{
-	// 	let marker = data.marker;
-	// 	let map = this.props.mainState.map;
-	// 	this.props.openInfo(map,marker);
-	// }
-
+	
 	render(){
 		let props = this.props;
 		const { query } = this.state
@@ -45,9 +31,11 @@ class VenuesList extends Component{
 				    if(match.test(data.venue.name)){
 				    	data.marker.setVisible(true);
 				    	showingVenues.push(data);
+				    	
 				    	props.closeInfow();
 					}else{
 				    	data.marker.setVisible(false);
+				    	props.zoomOut();				    	
 					} 
 				});
 			}else {
@@ -72,7 +60,7 @@ class VenuesList extends Component{
 		        <ul className='venue-list'>
 		        	{ 
 		        		showingVenues.map((data,i)=>{
-						if(i<15){ 
+						if(i<11){ 
 							return <li role="button" onClick={props.openInfow.bind(this,data.marker,data.venue.name)} onKeyPress={props.openInfow.bind(this,data.marker,data.venue.name)} key={i} tabIndex='0'>{data.venue.name}</li>
 						}
 					})}
