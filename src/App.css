@@ -34,13 +34,14 @@
 
       /* Optional: Makes the sample page fill the window. */
       
-html, body {
+html, body, {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
     }
 
- 
+
 
 
 
@@ -80,28 +81,32 @@ html, body {
       }
 
       h1 {
-        color: #525454;
+        color: gray;
         font-size: 22px;
-        margin: 0 0 10px 0;
-        text-align: center;
+        margin: 0 0 0px 0;
+        padding-left: 15px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
       }
 
       
       #map {
-        bottom:0px;
-        height: 100%;
-        left: 362px;
+        bottom: 0px;
+        top: 40px;
+        height: calc(100% - 40px);
+        left: 260px;
         position: absolute;
-        right: 0px;
+        right: 0px; 
       }
 
-      .options-box {
-        background: #fff;
-        height: 100%;
+      .side-bar {
+        background: black;
+        color: white;
+        height: calc(100vh - 40px);
         line-height: 35px;
-        padding: 10px 10px 30px 10px;
+        padding: 10px 10px 30px 0px;
         text-align: left;
-        width: 340px;
+        width: 250px;
       }
  
 
@@ -110,8 +115,48 @@ html, body {
         width: 84%;
       }
 
-      .text {
-        font-size: 12px;
-      }
+      .navbar{
+        width: 100%;
+        height: 40px;
+        display: block;
+        background-color: black;
+        color: white;
+        position: fixed;
+        z-index: 1;
+        padding-right: 5px;
+        left: 260px;
+       }
 
-       
+      .hamburger{
+          display: inline-block;
+           width: 30px;
+           height: 30px; 
+           text-align: center;
+           line-height: 30px;
+           vertical-align: middle;
+           cursor: pointer;
+           color: #6b9ffc;
+       }
+
+       .venue-list{
+        list-style-type: none;
+        padding-left: 15px; 
+       }
+
+       .venue-list>li{
+          cursor: pointer;
+          color:gray;
+          font-family: 'Roboto', sans-serif;
+       }
+
+       .filter-input{
+        margin-top: 15px;        
+        padding: 5px;
+        padding-left: 15px;
+        width: 240px;
+        border: none;
+        height: 30px;
+        font-size: large;
+        letter-spacing: 0.5px;
+        color: #b5b5b5;
+       }
