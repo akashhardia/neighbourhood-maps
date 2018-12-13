@@ -7,8 +7,7 @@ class VenuesList extends Component{
 
 	static propTypes = {
     	venues: PropTypes.array.isRequired,
-    	hide: PropTypes.func.isRequired,
-    	show: PropTypes.func.isRequired
+    	
   	}
 
   	state={
@@ -19,13 +18,20 @@ class VenuesList extends Component{
 	    this.setState({ query: query })
 	}
 
-	showMarkers=(markers)=>{
-		markers.forEach(marker=>marker.setVisible(true));
-	}
+	// showMarkers=(markers)=>{
+	// 	markers.forEach(marker=>marker.setVisible(true));
+	// }
 
-	hideMarkers=()=>{
-		this.props.venues.forEach(marker=>marker.setVisible(false));
-	}
+	// hideMarkers=()=>{
+	// 	this.props.closeInfo();
+	// 	this.props.venues.forEach(marker=>marker.setVisible(false));
+	// }
+
+	// openInfoWindow=(data)=>{
+	// 	let marker = data.marker;
+	// 	let map = this.props.mainState.map;
+	// 	this.props.openInfo(map,marker);
+	// }
 
 	render(){
 		let props = this.props;
@@ -39,6 +45,7 @@ class VenuesList extends Component{
 				    if(match.test(data.venue.name)){
 				    	data.marker.setVisible(true);
 				    	showingVenues.push(data);
+				    	props.closeInfow();
 					}else{
 				    	data.marker.setVisible(false);
 					} 
@@ -48,17 +55,12 @@ class VenuesList extends Component{
 			}
 				  
 	    showingVenues.sort(sortBy('name'));
-	    // this.hideMarkers();
-	    // this.showMarkers(showingVenues);
-	    // this.props.show(showingVenues);
+	   
 
-
-		 return (
-
+		return (
             <div className="side-bar">
 		        <h1>Restaurant Locations</h1>
-		        
-		        
+		        	        
 		        <input
 		            className='filter-input'
 		            type='text'
@@ -71,11 +73,11 @@ class VenuesList extends Component{
 		        	{ 
 		        		showingVenues.map((data,i)=>{
 						if(i<15){ 
-							return <li onClick={ function(j) { return function() {props.setVenue(j)} }(data) } key={i}>{data.venue.name}</li>
+							return <li role="button" onClick={props.openInfow.bind(this,data.marker,data.venue.name)} onKeyPress={props.openInfow.bind(this,data.marker,data.venue.name)} key={i} tabIndex='0'>{data.venue.name}</li>
 						}
 					})}
 		        </ul>
-		      </div>
+		    </div>
         );
 	}
 }
