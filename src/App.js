@@ -118,9 +118,6 @@ class App extends Component {
 			 map.setCenter(center);
 			});
 
-     	window.google.maps.event.addListener(map, 'click', function () {
-            self.closeInfoWindow();
-        });
 
     	//information window
     	var infowindow = new window.google.maps.InfoWindow();
